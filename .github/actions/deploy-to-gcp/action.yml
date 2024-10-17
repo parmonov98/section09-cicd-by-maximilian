@@ -1,14 +1,13 @@
 name: "Deploy to Google Storage"
-description: deploy static build to Storage of Google"
-# inputs:
-#   caching:
-#     description: 'Where to cache deps or not'
-#     required: false,
-#     default: 'true'
-# outputs:
-#   used-cache:
-#     description: 'Whether the cache was used or not'
-#     value: ${{ steps.installing.outputs.cache }}
+description: "Deploy static build to Google Storage"
+inputs:
+  bucket_name:
+    description: "The name of the GCS bucket"
+    required: true
+  source_dir:
+    description: "Directory containing the static files to deploy"
+    required: true
+
 runs:
   using: "node20"
-  main: "main.js"
+  main: "index.js"
