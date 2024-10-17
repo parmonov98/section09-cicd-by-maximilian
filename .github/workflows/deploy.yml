@@ -65,4 +65,4 @@ jobs:
       - name: Deploy site
         run: echo "Deploying..."
       - name: "Deploy to S3"
-        uses: ./.github/actions/deploy-s3-amazon
+        uses: ./.github/actions/deploy-s3-gcp
