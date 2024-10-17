@@ -19,7 +19,6 @@ async function run() {
         const keyFilePath = './gcp-key.json';
         fs.writeFileSync(keyFilePath, serviceAccountKey);
 
-
         // Verify the contents of the gcp-key.json file
         fs.readFile(keyFilePath, 'utf8', (err, data) => {
             if (err) {
