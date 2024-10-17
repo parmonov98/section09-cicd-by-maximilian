@@ -7,7 +7,6 @@ inputs:
   source_dir:
     description: "Directory containing the static files to deploy"
     required: true
-
 runs:
   using: "node20"
   main: "index.js"

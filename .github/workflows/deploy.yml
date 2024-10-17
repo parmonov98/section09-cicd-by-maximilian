@@ -34,7 +34,7 @@ jobs:
       - name: Deploy site
         run: echo "Deploying..."
       - name: Deploy to GCS
-        uses: ./.github/actions/deploy-to-gcs
+        uses: ./.github/actions/deploy-to-gcp
         with:
           bucket_name: 'cicd-by-maximilian'
           source_dir: 'dist'
