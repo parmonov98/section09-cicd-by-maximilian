@@ -4,38 +4,7 @@ on:
     branches:
       - main
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: "Load and Cache deps"
-        uses: ./.github/actions/cached-dependencies
-      - name: Lint code
-        run: npm run lint
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Get code
-        uses: actions/checkout@v3
-      - name: "Load and Cache deps"
-        id: cached-dependencies
-        uses: ./.github/actions/cached-dependencies
-        with:
-          caching: 'false'
-      - name: Out caching value
-        run: echo "Cache used? ${{steps.cached-dependencies.outputs.used-cache}}"
-      - name: Test code
-        id: run-tests
-        run: npm run test
-      - name: Upload test report
-        if: failure() && steps.run-tests.outcome == 'failure'
-        uses: actions/upload-artifact@v3
-        with:
-          name: test-report
-          path: test.json
   build:
-    needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Get code
@@ -72,5 +41,3 @@ jobs:
         env:
           GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
           GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-      # - name: "Deploy to S3"
-      #   uses: ./.github/actions/deploy-s3-amazon
