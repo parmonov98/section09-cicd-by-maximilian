@@ -64,5 +64,13 @@ jobs:
         run: ls
       - name: Deploy site
         run: echo "Deploying..."
-      - name: "Deploy to S3"
-        uses: ./.github/actions/deploy-s3-gcp
+      - name: Deploy to GCS
+        uses: ./.github/actions/deploy-to-gcs
+        with:
+          bucket_name: 'cicd-by-maximilian'
+          source_dir: 'dist'
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+          GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      # - name: "Deploy to S3"
+      #   uses: ./.github/actions/deploy-s3-amazon
