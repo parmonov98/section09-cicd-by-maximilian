@@ -1,0 +1,14 @@
+name: "Deploy to Google Storage"
+description: deploy static build to Storage of Google"
+# inputs:
+#   caching:
+#     description: 'Where to cache deps or not'
+#     required: false,
+#     default: 'true'
+# outputs:
+#   used-cache:
+#     description: 'Whether the cache was used or not'
+#     value: ${{ steps.installing.outputs.cache }}
+runs:
+  using: "node20"
+  main: "main.js"
